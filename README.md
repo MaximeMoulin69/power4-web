@@ -1,22 +1,25 @@
-Puissance 4
+# Power4
 Description
 
-Puissance 4 est un jeu classique où deux joueurs s'affrontent pour aligner 4 jetons de leur couleur sur une grille. Ce projet a été réalisé dans le cadre d'un Bachelor 1, afin de mettre en pratique les concepts de programmation, tels que les boucles, les conditions et la gestion de l’interface utilisateur (console ou graphique selon votre version).
+1. Power4 est une version simple du célèbre jeu Puissance 4.
+Deux joueurs s'affrontent pour aligner 4 pions de leur couleur horizontalement, verticalement ou en diagonale.
 
-Fonctionnalités
+Règles du jeu
 
-Jeu pour 2 joueurs.
+Le jeu se joue sur une grille de 6 lignes et 7 colonnes.
 
-Grille de 6 lignes x 7 colonnes (modifiable selon les besoins).
+Chaque joueur choisit une couleur de pion (ou un symbole).
 
-Vérification automatique de la victoire (alignement horizontal, vertical et diagonal).
+À tour de rôle, les joueurs déposent un pion dans une colonne.
 
-Gestion des tours des joueurs.
+Le premier joueur à aligner 4 pions gagne.
 
-Message de fin de partie (victoire ou match nul).
+Si la grille est remplie sans alignement, le jeu se termine par un match nul.
 
-(Optionnel) Interface graphique simple ou console interactive.
+Comment lancer le jeu
 
-Installation
+- Cloner le projet 
+- lancer le jeu (go run main.go)
+- aller a l'adresse suivante : http://localhost:8080/
 
-Cloner ce dépôt :
+# Bon jeu a vous !
