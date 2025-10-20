@@ -1,0 +1,183 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background-image: url("/static/fond.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-right: 50px;
+}
+
+/* ===============================
+   MOTIF DE FOND
+===============================*/
+body::before {
+  content: '';
+  position: absolute;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+
+.wavy-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: 100px 100px;
+}
+
+/* ===============================
+   MISE EN PAGE
+===============================*/
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+/* ===============================
+   SÉLECTEUR DE MODE
+===============================*/
+.mode-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mode-btn {
+  background: #2a2a2a;
+  border: 3px solid white;
+  border-radius: 15px;
+  padding: 20px 60px;
+  color: white;
+  font-size: 24px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mode-btn:hover {
+  background: white;
+  color: #1a1a1a;
+  transform: scale(1.05);
+}
+
+.mode-btn.active {
+  background: white;
+  color: #1a1a1a;
+}
+
+.icon {
+  font-size: 32px;
+}
+
+/* ===============================
+   FORMULAIRE
+===============================*/
+.form-container {
+  background: rgba(42, 42, 42, 0.9);
+  border: 4px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 50px;
+  min-width: 400px;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+input {
+  width: 100%;
+  background: transparent;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 15px 20px;
+  color: white;
+  font-size: 18px;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+input:focus {
+  outline: none;
+  border-color: #00ff00;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #00ff00;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  color: #1a1a1a;
+  font-size: 24px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.submit-btn:hover {
+  background: #00cc00;
+  transform: scale(1.05);
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+/* ===============================
+   BOUTONS DE NAVIGATION
+===============================*/
+.menu-btn {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.refresh-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: transparent;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 10;
+}

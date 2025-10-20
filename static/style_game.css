@@ -1,0 +1,269 @@
+/* ===============================
+   RÉINITIALISATION GÉNÉRALE
+===============================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background-image: url("/static/fond.jpg");
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+/* Effets visuels de fond */
+body::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: url("/static/image/fond.jpg");
+}
+
+.wavy-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: 100px 100px;
+  background-image: url("/static/image/fond.jpg");
+  transform: rotate(15deg);
+  opacity: 0.3;
+}
+
+/* ===============================
+    MISE EN PAGE GÉNÉRALE
+===============================*/
+.container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+/* ===============================
+    BOUTONS DE NAVIGATION
+===============================*/
+.menu-btn,
+.refresh-btn {
+  position: absolute;
+  top: 30px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s;
+}
+
+.menu-btn:hover,
+.refresh-btn:hover {
+  transform: scale(1.1);
+}
+
+.menu-btn {
+  left: 30px;
+}
+
+.refresh-btn {
+  right: 30px;
+}
+
+/* ===============================
+    BOUTONS JOUEURS
+===============================*/
+.player-btn {
+  background: #ff4444;
+  border: none;
+  border-radius: 25px;
+  padding: 20px 40px;
+  color: white;
+  font-size: 24px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 0.5;
+}
+
+.player-btn.player2 {
+  background: #ffaa00;
+}
+
+.player-btn.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.player-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   PLATEAU DE JEU
+===============================*/
+.game-board {
+  background: #4a9eff;
+  border: 8px solid #2a7acc;
+  border-radius: 20px;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Indicateur de colonne (flèche qui bouge) */
+.drop-indicator {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 30px solid #ff4444;
+  animation: bounce 0.5s infinite;
+}
+
+
+.drop-indicator.player2 {
+  border-top-color: #ffaa00;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ===============================
+   BOUTONS DE COLONNES (au-dessus)
+===============================*/
+.column-controls {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.column-controls form {
+  display: flex;
+  justify-content: center;
+}
+
+.column-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  cursor: pointer;
+  height: 40px;
+  width: 60px;
+  color: white;
+  font-size: 22px;
+  font-family: 'Courier New', monospace;
+  transition: all 0.2s;
+}
+
+.column-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: white;
+  transform: translateY(-3px);
+}
+
+.column-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   GRILLE DE JEU
+===============================*/
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-auto-rows: 60px;
+  justify-content: center;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.cell.player1 {
+  background: #ff4444;
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.5);
+}
+
+.cell.player2 {
+  background: #ffaa00;
+  box-shadow: 0 4px 15px rgba(255, 170, 0, 0.5);
+}
+
+.cell.winning {
+  animation: pulse 0.5s infinite;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.8) !important;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ===============================
+   BANNIÈRES DE STATUT (victoire/nul)
+===============================*/
+.status-banner {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff4444;
+  color: white;
+  padding: 20px 60px;
+  border-radius: 50px;
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 100;
+  animation: slideDown 0.5s;
+  text-align: center;
+}
+
+@keyframes slideDown {
+  from { top: -100px; opacity: 0; }
+  to { top: 50px; opacity: 1; }
+}
+
+.rematch-btn {
+  background: #00ff00;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 40px;
+  color: #1a1a1a;
+  font-size: 20px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s;
+}
+
+.rematch-btn:hover {
+  background: #00cc00;
+  transform: scale(1.05);
+}

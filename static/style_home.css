@@ -1,0 +1,98 @@
+/* ===============================
+   RÉINITIALISATION GÉNÉRALE
+===============================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===============================
+   EFFETS DE FOND
+===============================*/
+body::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 50px,
+      rgba(255, 255, 255, 0.03) 50px,
+      rgba(255, 255, 255, 0.03) 51px
+  );
+  animation: waves 20s linear infinite;
+}
+
+@keyframes waves {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ===============================
+   CONTENEUR CENTRAL
+===============================*/
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* ===============================
+   BARRE DE CHARGEMENT
+===============================*/
+.loading-bar {
+  width: 500px;
+  height: 60px;
+  border: 4px solid white;
+  border-radius: 30px;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-progress {
+  height: 100%;
+  background: white;
+  width: 0%;
+  animation: load 3s ease-in-out forwards;
+}
+
+@keyframes load {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* ===============================
+   TITRE ET SOUS-TITRE
+===============================*/
+h1 {
+  color: white;
+  margin-bottom: 50px;
+  font-size: 48px;
+}
+
+.subtitle {
+  color: #4a9eff;
+  font-style: italic;
+}

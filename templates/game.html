@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Power4 Web - Jeu</title>
+  <link rel="stylesheet" href="/static/style_game.css">
+</head>
+
+<body>
+  <button class="menu-btn" onclick="window.location.href='/'">☰</button>
+  <button class="refresh-btn" onclick="window.location.href='/reset'">↻</button>
+
+  <div class="wavy-lines"></div>
+
+  {{if .Winner}}
+  <div class="status-banner">
+    {{if eq .Winner 1}}{{.Player1Name}}{{else}}{{.Player2Name}}{{end}} a gagné la partie !
+    <br />
+    <form method="POST" action="/reset" style="display: inline;">
+      <button type="submit" class="rematch-btn">REJOUER</button>
+    </form>
+  </div>
+  {{else if .IsDraw}}
+  <div class="status-banner" style="background: #ffaa00;">
+    Match nul !
+    <br />
+    <form method="POST" action="/reset" style="display: inline;">
+      <button type="submit" class="rematch-btn">REJOUER</button>
+    </form>
+  </div>
+  {{end}}
+
+  <div class="container">
+    <button class="player-btn {{if eq .CurrentPlayer 1}}active{{end}}">
+      {{.Player1Name}}
+    </button>
+
+    <div class="game-board">
+      {{if and (not .Winner) (not .IsDraw)}}
+      <div class="drop-indicator {{if eq .CurrentPlayer 2}}player2{{end}}"></div>
+      {{end}}
+
+      <div class="column-controls" style="grid-template-columns: repeat({{.Cols}}, 60px);">
+        {{range $i := iterate .Cols}}
+        <form method="POST" action="/play">
+          <input type="hidden" name="column" value="{{$i}}" />
+          <button type="submit" class="column-btn">▼</button>
+        </form>
+        {{end}}
+      </div>
+
+      <div class="grid" style="grid-template-columns: repeat({{.Cols}}, 60px);">
+        {{range $rowIndex, $row := .Board}}
+        {{range $colIndex, $cell := $row}}
+        <div class="cell {{if eq $cell 1}}player1{{else if eq $cell 2}}player2{{end}}"></div>
+        {{end}}
+        {{end}}
+      </div>
+    </div>
+
+    <button class="player-btn player2 {{if eq .CurrentPlayer 2}}active{{end}}">
+      {{.Player2Name}}
+    </button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power4 Web - Démarrage</title>
+    <link rel="stylesheet" href="/static/style_start.css">
+</head>
+<body>
+    <button class="menu-btn">☰</button>
+    <button class="refresh-btn" onclick="window.location.reload()">↻</button>
+    
+    <div class="wavy-pattern"></div>
+    
+    <div class="container">
+
+        <form method="POST" action="/start" class="form-container">
+            <h2>Puissance <span style="color: #4a9eff;">4</span></h2>
+            <div class="form-group">
+                <input type="text" name="player1" placeholder="nom joueur 1" required>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" name="player2" placeholder="nom joueur 2" required>
+            </div>
+
+            <p><span style="color: #ffffff;">Choisis la difficulté :</span></p>
+            <br>
+
+            <div class="mode-selector">
+                <input type="radio" id="easy" name="difficulty" value="easy" checked>
+                <label for="easy"><span style="color: #ffffff;">🟢 Facile</span></label><br>
+
+                <input type="radio" id="normal" name="difficulty" value="normal">
+                <label for="normal"><span style="color: #ffffff;">🟠 Normal</span></label><br>
+
+                <input type="radio" id="hard" name="difficulty" value="hard">
+                <label for="hard"><span style="color: #ffffff;">🔴 Difficile</span></label><br>
+            </div>
+
+            <button type="submit" class="submit-btn">JOUER</button>
+        </form>
+    </div>
+</body>
+</html>
