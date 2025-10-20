@@ -6,7 +6,7 @@ Deux joueurs s'affrontent pour aligner 4 pions de leur couleur horizontalement, 
 
 Règles du jeu
 
-Le jeu se joue sur une grille de 6 lignes et 7 colonnes.
+Le jeu se joue sur une grille de 6x7, 6x9 ou 7x8.
 
 Chaque joueur choisit une couleur de pion (ou un symbole).
 
